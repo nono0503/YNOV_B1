@@ -1,5 +1,5 @@
 ```
-Faire HTML
-Faire CSS
+Refaire HTML
+Refaire CSS
 Comprendre JS + refaire
 ```
