@@ -1,6 +1,6 @@
 # Question 1 :
 
-### Sur une VM serveur : Créez un serveur git qui servira un repo git en SSH. Nommez le repo tp-note
+#### Sur une VM serveur : Créez un serveur git qui servira un repo git en SSH. Nommez le repo tp-note
 
 ```
 sudo apt install git
