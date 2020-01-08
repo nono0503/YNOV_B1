@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1577290026 source:c:\users\travail\google drive\etudes\ynov\cours\programelem\librairiephp\phplibrairie\main.c
+	<stdio.h>
+	<string.h>
+	"phplib.h"
+
+1577290056 c:\users\travail\google drive\etudes\ynov\cours\programelem\librairiephp\phplibrairie\phplib.h
+
+1577379381 source:c:\users\travail\google drive\etudes\ynov\cours\programelem\librairiephp\phplibrairie\phplib.c
+	<stdio.h>
+
