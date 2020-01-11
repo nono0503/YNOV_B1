@@ -1,368 +1,695 @@
 #include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <math.h>
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//LCFIRST//
-char * lcfirst(char * str) {
-  if (str[0] == '\0') return "";
-  int l = strlen(str);
-  char * result = malloc(sizeof(char * ) * l);
-  result[0] = str[0] + 32;
-  for (int i = 1; i < l; i++)
-    result[i] = str[i];
-  return result;
+
+void explode(int delimiter, char* phrase, char* mot, char* mot2)
+{
+int i = 0;
+int j = 0;
+while(phrase[i] != delimiter)
+{
+  mot[i] = phrase[i];
+  i++;
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//LTRIM//
-int monEspace(char espace) {
-  if (espace == ' ' ||
-    espace == '\f' ||
-    espace == '\n' ||
-    espace == '\r' ||
-    espace == '\t' ||
-    espace == '\v')
-    return 1;
+mot[i] = '\0';
 
-  return 0;
+while(phrase[i] != '\0')
+{
+  mot2[j] = phrase[i+1];
+  i++;
+  j++;
+}
+mot2[j] = '\0';
+
 }
 
-char * ltrim(char * caractereMasque) {
-  if (caractereMasque[0] == '\0') return "";
-  char * resultat = malloc(sizeof(char * ) * strlen(caractereMasque));
-  for (int i = 0; i < strlen(caractereMasque); i++) resultat[i] = caractereMasque[i];
-  while (espace( * resultat)) resultat++;
-  return resultat;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//STRTOLOWER//
-char * strtolower(char * str) {
-  if (str[0] == '\0') return "";
-  int l = strlen(str);
-  char * resultat = malloc(sizeof(char * ) * l);
-  for (int i = 0; i < l; i++) {
-    if (str[i] >= 'A' && str[i] <= 'Z')
-      resultat[i] = str[i] + 32;
-    else
-      resultat[i] = str[i];
-  }
-  return resultat;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//STRTOUPPER//
-char * strtoupper(char * str) {
-  if (str[0] == '\0') return "";
-  int l = strlen(str);
-  char * resultat = malloc(sizeof(char * ) * l);
-  for (int i = 0; i < l; i++) {
-    if (str[i] >= 'a' && str[i] <= 'z') resultat[i] = str[i] - 32;
-    else resultat[i] = str[i];
-  }
-  return resultat;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//SUBSTR_COUNT//
-int substr_count(char * chaine, char * motif) {
-  if (chaine[0] == '\0' || motif[0] == '\0') return -1;
+char* implode(char* result, char* phrase)
+{
+    int i = 0;
+    int j = 0;
 
-  int * resultat = malloc(sizeof(int)),
-    chaine1 = strlen(chaine),
-    motif1 = strlen(motif),
-    flag;
-
-  * resultat = 0;
-
-  for (int i = 0; i < chaine1 - motif1; i++) {
-    flag = 0;
-    for (int j = 0; j < motif1; j++) {
-      if (chaine[i + j] != motif[j]) flag = 1;
+    while(result[i] != 0)
+    {
+        i++;
     }
-    if (flag == 0) * resultat += 1;
-  }
-
-  return *resultat;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//STRSTR//MODIFIER F,J,L
-char * strstr(char * chaineatraiter, char * depart, char * arrive) {
-  if (strlen(depart) != strlen(arrive) || strlen(chaineatraiter) < strlen(depart) || strlen(chaineatraiter) < strlen(arrive)) return "";
-  int f, j, l = strlen(chaineatraiter);
-  char * resultat = malloc(sizeof(char * ) * l);
-  for (int i = 0; i < l; i++) {
-    f = 0, j = 0;
-    for (; j < strlen(depart); j++) {
-      if (source[i] == depart[j]) {
-        f = 1;
-        break;
-      }
+    result[i] = ' ';
+    while(phrase[j] != 0)
+    {
+        result[i+1] = phrase[j];
+        i++;
+        j++;
     }
-    if (f) resultat[i] = arrive[j];
-    else resultat[i] = chaineatraiter[i];
-  }
-  return resultat;
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//lcfirst
-char * lcfirst(char* str){
+    return result;
+}
+
+char* lcfirst(char* str)
+{
     *str = *str + ('a' - 'A');
     return str;
 }
 
-//explode
-void explode(const char *src, const char *tokens, char ***list, size_t *len)
+char* ltrim(char* phrase, char* phrase2)
 {
-    if(src == NULL || list == NULL || len == NULL)
-        return;
-
-    char *str, *copy, **_list = NULL, **tmp;
-    *list = NULL;
-    *len  = 0;
-
-    copy = strdup(src);
-    if(copy == NULL)
-        return;
-
-    str = strtok(copy, tokens);
-    if(str == NULL)
-        goto free_and_exit;
-
-    _list = realloc(NULL, sizeof *_list);
-    if(_list == NULL)
-        goto free_and_exit;
-
-    _list[*len] = strdup(str);
-    if(_list[*len] == NULL)
-        goto free_and_exit;
-    (*len)++;
-
-
-    while((str = strtok(NULL, tokens)))
+    int j = 0;
+    int i = 0;
+    while(phrase[i] == ' ')
     {
-        tmp = realloc(_list, (sizeof *_list) * (*len + 1));
-        if(tmp == NULL)
-            goto free_and_exit;
-
-        _list = tmp;
-
-        _list[*len] = strdup(str);
-        if(_list[*len] == NULL)
-            goto free_and_exit;
-        (*len)++;
+        i++;
     }
 
+    while(phrase[i] != '\0')
+    {
+        phrase2[j] = phrase[i];
+        i++;
+        j++;
+    }
+    phrase2[j] = '\0';
 
-free_and_exit:
-    *list = _list;
-    free(copy);
+    return phrase2;
 }
 
-//implode en js
-function implode(symb,array){
-	var len = array.length;
-	var fin = '';
-	for(i = 0; i < len;i++){
-		if(i){
-			fin += symb;
-		}
-		fin +=array[i];
-	}
-	return fin;
-}
-
-//lcfirst en java
-public class LCFirst extends AbstractTemplateFunction {
-	public final static ITemplateFunction CONST = new LCFirst();
-
-	public LCFirst() {
-
-	}
-
-	@Override
-	public String parseFunction(List<String> list, IWikiModel model, char[] src, int beginIndex, int endIndex, boolean isSubst) {
-		if (list.size() > 0) {
-			String word = isSubst ? list.get(0) : parseTrim(list.get(0), model);
-			if (word.length() > 0) {
-				return Character.toLowerCase(word.charAt(0)) + word.substring(1);
-			}
-			return "";
-		}
-		return null;
-	}
-}
-
-//lcfirst en js
-function lcfirst (str) {
-    // http://kevin.vanzonneveld.net
-    // +   original by: Brett Zamir (http://brett-zamir.me)
-    // *     example 1: lcfirst('Kevin Van Zonneveld');
-    // *     returns 1: 'kevin Van Zonneveld'
-    str += '';
-    var f = str.charAt(0).toLowerCase();
-    return f + str.substr(1);
-}
-
-//ltrim
-const char *
-ltrim (const char *s)
+char* nl2br(char* phrase)
 {
-  while (isspace ((unsigned char)*s))
-    s++;
-  return s;
+    strcat(phrase, "\n");
+
+    return phrase;
 }
 
-//ltrim en php
-function _ltrim($str, $charlist = null)
+char* number_format(int chiffre, char* format)
 {
-    if (null === $charlist) {
-        return ltrim($str);
+    sprintf(format, "%d", chiffre);
+    char format2[20];
+/*    char format3[20];
+    char decimal[5];
+    char centaine[5];
+    char centaine1[5];
+    int i = 0;
+    int j = 0;
+    int h = 0;
+
+    while(format[i] != '\0')
+    {
+        i++;
     }
 
-    if (Utf8::isAscii($charlist)) {
-        return ltrim($str, $charlist);
+    while(format[i] != format[0])
+    {
+        format2[j] = format[i];
+        i--;
+        j++;
     }
 
-    $charlist = preg_replace('#[-\[\]:\\\\^/]#', '\\\\$0', $charlist);
+    for(i = 0 ; i != 2 ; i++)
+    {
+        decimal[i] = format2[i];
+    }
+    decimal[i] = '.';
 
-    return preg_replace('/^['.$charlist.']+/u', '', $str);
-}
+    for(i = 3 ; i != 5 || i != j ; i++)
+    {
+        centaine[h] = format2[i];
+        h++;
+    }
+    centaine[h] = ' ';
 
-//rtrim
-#include "libutil.h"
-char *
-rtrim (char *str)
-{
-  char *endPtr;
+    h = 0;
+    for(i = 5 ; i != 8 || i != j ; i++)
+    {
+        centaine1[h] = format2[i];
+        h++;
+    }
 
-  if (str == NULL || *str == '\0')
-    return NULL;
+    strcpy(format3, decimal);
+    strcat(format3, centaine);
+    strcat(format3, centaine1);
 
-  for (endPtr = &str[strlen (str) - 1]; endPtr >= str && isspace((unsigned char)*endPtr); endPtr--)
-    ;
-  endPtr[1] = 0;
-  return endPtr >= str ? endPtr : NULL;
-}
 
-//rtrim en js
-define(function(){
-    /**
-    * Remove white-spaces from end of string.
-    * @example stringUtils.rtrim('   lorem ipsum   ') -> '   lorem ipsum'
-    * @param {string} str
-    * @return {string}
+    for(j = 0 ; format3[j] != '\0' ; j++)
+    {}
+
+    for(i = 0 ; format3[j] != format3[0] ; i++)
+    {
+        format[i] = format3[j];
+        j--;
+    }
     */
-    function rtrim(str){
-        return (str || '').replace(/\s+$/g, '');
-    }
-    return rtrim;
-});
 
-//trim en js
-//trim function for sad ones
-if(typeof String.prototype.trim !== 'function') {
-  String.prototype.trim = function() {
-    return this.replace(/^\s+|\s+$/g, '');
-  }
-}
-
-//wordwrap en js
-function wordwrap (str, int_width, str_break, cut) {
-    // http://kevin.vanzonneveld.net
-    // +   original by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
-    // +   improved by: Nick Callen
-    // +    revised by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // +   improved by: Sakimori
-    // +   bugfixed by: Michael Grier
-    // *     example 1: wordwrap('Kevin van Zonneveld', 6, '|', true);
-    // *     returns 1: 'Kevin |van |Zonnev|eld'
-    // *     example 2: wordwrap('The quick brown fox jumped over the lazy dog.', 20, '<br />\n');
-    // *     returns 2: 'The quick brown fox <br />\njumped over the lazy<br />\n dog.'
-    // *     example 3: wordwrap('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-    // *     returns 3: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod \ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim \nveniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea \ncommodo consequat.'
-    // PHP Defaults
-    var m = ((arguments.length >= 2) ? arguments[1] : 75);
-    var b = ((arguments.length >= 3) ? arguments[2] : "\n");
-    var c = ((arguments.length >= 4) ? arguments[3] : false);
-
-    var i, j, l, s, r;
-
-    str += '';
-
-    if (m < 1) {
-        return str;
+    int i = 0, j = 0;
+    while(format[i] != '\0')
+    {
+        i++;
     }
 
-    for (i = -1, l = (r = str.split(/\r\n|\n|\r/)).length; ++i < l; r[i] += s) {
-        for (s = r[i], r[i] = ""; s.length > m; r[i] += s.slice(0, j) + ((s = s.slice(j)).length ? b : "")) {
-            j = c == 2 || (j = s.slice(0, m + 1).match(/\S*(\s)?$/))[1] ? m : j.input.length - j[0].length || c == 1 && m || j.input.length + (j = s.slice(m).match(/^\S*/)).input.length;
+    while(format[i] != format[0])
+    {
+        format2[j] = format[i];
+        i--;
+        j++;
+    }
+
+    for(i = 0 ; format2[i] != '\0' ; i++)
+    {
+        if(i==2)
+        {
+           format2[i] = '.';
+        }
+        else if(i==5)
+        {
+            format2[i] = ' ';
         }
     }
 
-    return r.join("\n");
-}
-
-
-
-
-
-
-// Dmitri
-
-
-char * php_nl2br(char * source) {
-  if (source[0] == '\0') return "";
-  int counter = 0,
-    l_source = strlen(source);
-  for (int i = 0; i < l_source; i++)
-    if (source[i] == '\n' || source[i] == '\r') counter++;
-  char * result = malloc(sizeof(char * ) * l_source + counter * 3);
-  int c = 0;
-  for (int i = 0; i < l_source; i++) {
-    if (source[i] == '\n' || source[i] == '\r') {
-      result[i + c] = '<';
-      result[i + c + 1] = 'b';
-      result[i + c + 2] = 'r';
-      result[i + c + 3] = '>';
-      c+=3;
-      continue;
+    for(j = 0 ; format2[j] != '\0' ; j++)
+    {
+        format[i] = format2[j];
+        i--;
     }
-    result[i + c] = source[i];
-  }
-  return result;
+
+
+    return format;
 }
 
 
-// TODO
-//NUMBER_FORMAT//
-char * number_format (int nombre, int decimale, char separateur) {
-  int nombre1 = 1 + (int)log10(nombre);
-  return "";
+char* rtrim(char* phrase, char* phrase2)
+{
+int j = 0;
+int i = 0;
+int h = strlen(phrase) - 1;
+while(phrase[h] == ' ')
+{
+  h--;
+}
+while(phrase[i] != phrase[h])
+{
+  phrase2[j] = phrase[i];
+  i++;
+  j++;
+}
+phrase2[j] = phrase[h];
+phrase2[j+1] = '\0';
+
+return phrase2;
 }
 
-char * php_substr_replace(char * source, char * pattern, int start) {
-  int l_source = strlen(source),
-    l_pattern = strlen(pattern),
-    c = 0;
-  if (source[0] == '\0' || pattern[0] == '\0' || start > l_source - l_pattern) return "";
-  char * result = malloc(sizeof(char * ) * l_source);
 
-  for (int i = 0; i < l_source; i++) {
-    if (i >= start && i < l_pattern + start) {
-      result[i] = pattern[c];
-      c++;
-    } else result[i] = source[i];
-  }
+char* str_pad(char* phrase, char* full)
+{
+    int i = 0;
+    char blanc[] = "=";
+    strcpy(full, phrase);
+    while(phrase[i] != '\0')
+    {
+        i++;
+    }
+    while(i != 10)
+    {
+        full[i] = blanc[0];
+        i++;
+    }
 
-  return result;
+    return full;
 }
 
-char * php_substr(char * source, int start) {
-  if (source[0] == '\0' || start < 0) return "";
-  int l_substr = strlen(source) - start;
-  char * result = malloc(sizeof(char * ) * l_substr);
-  int c = 0;
-  for (int i = start; i < start + l_substr; i++) {
-    result[c] = source[i];
-    c++;
+char* str_repeat(char* jacko)
+{
+    char repeat[20];
+    strcpy(repeat, jacko);
+    for(int i = 0 ; i != 2 ; i++)
+    {
+        strcat(jacko, repeat);
+    }
+
+    return jacko;
+}
+
+
+char* str_rto13(char* code)
+{
+for(int i = 0 ; code[i] != '\0' ; i++){
+    if(code[i] >= 'a' && code[i] <= 'm')
+    {
+        code[i] = code[i] + 13;
+    }else{
+    code[i] = code[i] - 13;
+    }
+}
+
+return code;
+}
+
+
+char* str_shuffle(char* phrase)
+{
+    int i = 0;
+    int j = 0;
+while(phrase[i] != '\0')
+{
+    i++;
+}
+while(phrase[j] != '\0')
+{
+    phrase[j] = phrase[rand()%i];
+    j++;
+}
+
+return phrase;
+}
+
+
+void str_split(char* split, char* split1, char* split2, int length)
+{
+int i = 0;
+int j = 0;
+for(i = 0 ; i < length ; i++)
+{
+  split1[i] = split[i];
+} split1[i] = '\0';
+for(; i< (length * 2) ; i++)
+{
+  split2[j] = split[i];
+  j++;
+} split2[j] = '\0';
+
+}
+
+
+int* str_word_count(char* phrase, int* count)
+{
+int j = 1;
+for (int i = 0; i != strlen(phrase); i++){
+ if (phrase[i] == ' ' || phrase[i] == '\t' || phrase[i] == '\n' || phrase[i] == '\x0B')
+ {
+   j++;
+ }
+}
+
+*count = j;
+
+return count;
+}
+
+
+void str_casecmp(char* chaud, char* chaude)
+{
+for(int i = 0 ; chaud[i] != '\0' ; i++)
+{
+  if(chaud[i] >= 'A' && chaud[i] <= 'Z')
+  {
+    chaud[i] = chaud[i] + 32;
   }
-  return result;
+}
+
+for(int j = 0 ; chaude[j] != '\0' ; j++)
+{
+  if(chaude[j] >= 'A' && chaude[j] <= 'Z')
+  {
+    chaude[j] = chaude[j] + 32;
+  }
+}
+
+}
+
+
+int* stripos(char* phrase, char* find, int* pos)
+{
+int i = 0, h = 0, l = 0;
+for(int v = 0 ; phrase[v] != '\0' ; v++)
+{
+  if(phrase[v] >= 'A' && phrase[v] <= 'Z')
+  {
+    phrase[v] = phrase[v] + 32;
+  }
+}
+for(int v = 0 ; find[v] != '\0' ; v++)
+{
+  if(find[v] >= 'A' && find[v] <= 'Z')
+  {
+    find[v] = find[v] + 32;
+  }
+}
+
+while(phrase[i] != '\0')
+{
+  if(phrase[i] == find[0])
+  {
+    int j = 0;
+    l = i;
+    while(phrase[h] == find[j] && find[j] != '\0')
+    {
+      h++;
+      j++;
+    }
+  }
+  i++;
+}
+*pos = l;
+
+return pos;
+}
+
+
+char* str_rchr(char* phrase, char* phrase2, int find)
+{
+int i = strlen(phrase);
+int j = 0;
+while(phrase[i] != find){
+  i--;
+}
+while(phrase[i] != '\0')
+{
+  phrase2[j] = phrase[i];
+  i++;
+  j++;
+}
+phrase2[j] = '\0';
+
+  return phrase2;
+}
+
+
+char* str_rev(char* phrase, char* phrase2)
+{
+  int j = 0;
+  int i = 0;
+  while(phrase[j] != '\0')
+  {
+    j++;
+  }
+while(phrase[i] != '\0')
+{
+  phrase2[j-1] = phrase[i];
+  i++;
+  j--;
+}
+phrase2[i] = '\0';
+
+  return phrase2;
+}
+
+
+int* strripos(char* phrase, char* find, int* pos)
+{
+int i = strlen(phrase);
+//int h = 0, l = 0;
+for(int v = 0 ; phrase[v] != '\0' ; v++)
+{
+  if(phrase[v] >= 'A' && phrase[v] <= 'Z')
+  {
+    phrase[v] = phrase[v] + 32;
+  }
+}
+for(int v = 0 ; find[v] != '\0' ; v++)
+{
+  if(find[v] >= 'A' && find[v] <= 'Z')
+  {
+    find[v] = find[v] + 32;
+  }
+}
+
+/*
+while(phrase[i] != phrase[0])
+{
+  if(phrase[i] == find[0])
+  {
+    int j = 0;
+     l = i;
+    while(phrase[h] == find[j] && find[j] != '\0')
+    {
+      h++;
+      j++;
+
+    }
+  }
+  i--;
+}
+*pos = l;
+*/
+int j = 0;
+int l = 0;
+char phrase2[20];
+while(phrase[i] != phrase[0])
+{
+  phrase2[j] = phrase[i];
+  j++;
+  i--;
+}
+
+while(phrase2[i] != '\0')
+{
+  if(phrase2[i] == find[0])
+  {
+    int j = 0;
+    int h = i;
+    l = i;
+    while(phrase2[h] == find[j] && find[j] != '\0')
+    {
+      h--;
+      j++;
+    }
+  }
+  i++;
+}
+*pos = strlen(phrase) - l;
+
+  return pos;
+}
+
+int* str_rpos(char* phrase, char* find, int* pos)
+{
+int i = strlen(phrase);
+int j = 0;
+int l = 0;
+char phrase2[20];
+while(phrase[i] != phrase[0])
+{
+  phrase2[j] = phrase[i];
+  j++;
+  i--;
+}
+
+while(phrase2[i] != '\0')
+{
+  if(phrase2[i] == find[0])
+  {
+    int j = 0;
+    int h = i;
+    l = i;
+    while(phrase2[h] == find[j] && find[j] != '\0')
+    {
+      h--;
+      j++;
+    }
+  }
+  i++;
+}
+*pos = strlen(phrase) - l;
+
+  return pos;
+}
+
+
+char* str_tok(char* phrase, char* phrase2, int* symbole)
+{
+int i = 0;
+while(phrase[i] != *symbole)
+ {
+  phrase2[i] = phrase[i];
+  i++;
+ }
+ phrase2[i] = '\0';
+
+return phrase2;
+}
+
+
+char* str_tolower(char* caps)
+{
+for(int i = 0 ; caps[i] != '\0' ; i++)
+{
+  if(caps[i] >= 'A' && caps[i] <= 'Z')
+  {
+    caps[i] = caps[i] + 32;
+  }
+}
+
+  return caps;
+}
+
+
+char* str_toupper(char* lock)
+{
+for(int i = 0 ; lock[i] != '\0' ; i++)
+{
+  if(lock[i] >= 'a' && lock[i] <= 'z')
+  {
+    lock[i] = lock[i] - 32;
+  }
+}
+
+  return lock;
+}
+
+
+char*str_str(char* phrase)
+{
+for(int i = 0 ; phrase[i] != '\0' ; i++)
+{
+  if(phrase[i] == 'H')
+  {
+    phrase[i] = 'B';
+  }
+  if(phrase[i] == 'o')
+  {
+    phrase[i] = 'a';
+  }
+}
+
+  return phrase;
+}
+
+
+int* substr_count(char* phrase, char* phrase2, int* nb)
+{
+int a = 0;
+for(int i = 0 ; phrase[i] != '\0' ; i++)
+{
+  if(phrase[i] == phrase2[0])
+  {
+    int j = 0;
+    int h = i;
+    while(phrase[h] == phrase2[j])
+    {
+      h++;
+      j++;
+      if(phrase2[j+1] == '\0')
+      {
+        a++;
+      }
+    }
+  }
+}
+*nb = a;
+
+  return nb;
+}
+
+char* substr_replace(char* phrase)
+{
+char maudit[13] = "Hell";
+char phrase2[20] = "Paradis";
+char origine[200] = "";
+int h = 0;
+
+for (int i = 0 ; phrase[i] != '\0' ; i++)
+{
+  if(phrase[i] == maudit[0])
+  {
+    int j = 0;
+    while(phrase[i] == maudit[j])
+    {
+      if(maudit[j+1] == '\0')
+      {
+        strcat(origine, phrase2);
+      }
+      j++;
+      i++;
+    }
+    strcat(origine, &phrase[i]);
+  }
+  if(phrase[i] != maudit[0])
+  {
+    strcat(origine, &phrase[i]);
+  }
+}
+strcpy(phrase, origine);
+
+return phrase;
+}
+
+char* sub_str(char* phrase, char* phrase2, int* start, int* taille)
+{
+int j = 0;
+int i = *start;
+while(phrase[i] != phrase[(*start + *taille )])
+{
+  phrase2[j] = phrase[i];
+  j++;
+  i++;
+}
+phrase2[j] = '\0';
+
+return phrase2;
+}
+
+char* trim(char* phrase, char* phrase2)
+{
+int j = 0;
+int i = 0;
+int h = strlen(phrase) - 1;
+while(phrase[i] == ' ')
+{
+  i++;
+}
+while(phrase[h] == ' ')
+{
+  h--;
+}
+while(phrase[i] != phrase[h])
+{
+  phrase2[j] = phrase[i];
+  i++;
+  j++;
+}
+phrase2[j] = phrase[h];
+phrase2[j+1] = '\0';
+
+  return phrase2;
+}
+
+
+char* ucfirst(char* phrase)
+{
+*phrase = *phrase - 32;
+
+  return phrase;
+}
+
+
+char* ucwords(char* phrase)
+{
+phrase[0] = phrase[0] - 32;
+for(int i = 0 ; phrase[i] != '\0' ; i++)
+{
+  if(phrase[i] == ' ')
+  {
+    phrase[i+1] = phrase[i+1] -32;
+  }
+}
+
+  return phrase;
+}
+
+
+void wordwrap(char* phrase, char* phrase1, char* phrase2)
+{
+int i = 0;
+int j = 0;
+while(phrase[i] != ' ')
+{
+  phrase1[i] = phrase[i];
+  i++;
+}
+phrase1[i] = '\0';
+
+while(phrase[i] != '\0')
+{
+  phrase2[j] = phrase[i+1];
+  i++;
+  j++;
+}
+phrase2[j] = '\0';
+
 }
