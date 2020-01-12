@@ -1,38 +1,38 @@
 #include <stdio.h>
 #include <string.h>
-#include "php.h"
+#include "phplib.h"
 
 /*
 http://php.net/manual/fr/function.explode.php
 http://php.net/manual/fr/function.implode.php
-http://php.net/manual/fr/function.lcfirst.php
-http://php.net/manual/fr/function.ltrim.php
-http://php.net/manual/fr/function.nl2br.php
+http://php.net/manual/fr/function.lcfirst.php           //
+http://php.net/manual/fr/function.ltrim.php             //
+http://php.net/manual/fr/function.nl2br.php             //
 http://php.net/manual/fr/function.number-format.php
-http://php.net/manual/fr/function.rtrim.php
-http://php.net/manual/fr/function.str-pad.php
-http://php.net/manual/fr/function.str-repeat.php
-http://php.net/manual/fr/function.str-rot13.php
-http://php.net/manual/fr/function.str-shuffle.php
+http://php.net/manual/fr/function.rtrim.php             //
+http://php.net/manual/fr/function.str-pad.php           //
+http://php.net/manual/fr/function.str-repeat.php        //
+http://php.net/manual/fr/function.str-rot13.php         //
+http://php.net/manual/fr/function.str-shuffle.php       //
 http://php.net/manual/fr/function.str-split.php
-http://php.net/manual/fr/function.str-word-count.php
+http://php.net/manual/fr/function.str-word-count.php    //
 http://php.net/manual/fr/function.strcasecmp.php
 http://php.net/manual/fr/function.stripos.php
 http://php.net/manual/fr/function.strrchr.php
-http://php.net/manual/fr/function.strrev.php
+http://php.net/manual/fr/function.strrev.php            //
 http://php.net/manual/fr/function.strripos.php
 http://php.net/manual/fr/function.strrpos.php
 http://php.net/manual/fr/function.strtok.php
-http://php.net/manual/fr/function.strtolower.php
-http://php.net/manual/fr/function.strtoupper.php
-http://php.net/manual/fr/function.strtr.php
+http://php.net/manual/fr/function.strtolower.php        //
+http://php.net/manual/fr/function.strtoupper.php        //
+http://php.net/manual/fr/function.strtr.php             //
 http://php.net/manual/fr/function.substr-count.php
 http://php.net/manual/fr/function.substr-replace.php
 http://php.net/manual/fr/function.substr.php
-http://php.net/manual/fr/function.trim.php
-http://php.net/manual/fr/function.ucfirst.php
-http://php.net/manual/fr/function.ucwords.php
-http://php.net/manual/fr/function.wordwrap.php
+http://php.net/manual/fr/function.trim.php              //
+http://php.net/manual/fr/function.ucfirst.php           //
+http://php.net/manual/fr/function.ucwords.php           //
+http://php.net/manual/fr/function.wordwrap.php          //
 
 */
 
@@ -40,24 +40,8 @@ http://php.net/manual/fr/function.wordwrap.php
 int main()
 {
     printf("Hello World!\n\n");
-    printf("===== Fonction de Louis Lecchi =====\n\n");
+    printf("Fonctions de Pierre Da Silva\n\n");
     int nbPoint = 0;
-
-
-//http://php.net/manual/fr/function.explode.php
-    char phrase[20] = "Hello,World";
-    char phrase2[20], phrase3[20];
-    explode(',', phrase, phrase2, phrase3);
-    if(strcmp(phrase2, "Hello") == 0)
-     {
-       if(strcmp(phrase3, "World") == 0)
-        printf("explode is ok\n");
-        nbPoint ++;
-     }
-     else
-    {
-        printf("explode Down.. \n");
-    }
 
 
 //http://php.net/manual/fr/function.implode.php
@@ -117,23 +101,6 @@ int main()
     {
         printf("nl2br Down..\n");
     }
-
-
-//http://php.net/manual/fr/function.number-format.php
-    int nbFormat = 3643871;
-    char fiii [20];
-    number_format(nbFormat, fiii);
-    printf("%s ",fiii);
-    if(strcmp(fiii, "36 438.71") == 0)
-    {
-        printf("number-format is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("number-format Down..\n");
-    }
-
 
 
 //http://php.net/manual/fr/function.rtrim.php
@@ -234,25 +201,6 @@ int main()
     }
 
 
-//https://www.php.net/manual/fr/function.str-split.php
-    char split[20] = "hello world";
-    char split1[20], split2[20];
-    int length = 3;
-    str_split(split, split1, split2, length);
-    if(strcmp(split1, "hel") == 0)
-    {
-      if(strcmp(split2, "lo ") == 0)
-      {
-        printf("str-split is ok\n");
-        nbPoint++;
-      }
-    }
-    else
-    {
-        printf("str-split Down..\n");
-    }
-
-
 //http://php.net/manual/fr/function.str-word-count.php
     char count2[40] = "hello world\nje suis\tbeau";
     int count = 1;
@@ -268,54 +216,6 @@ int main()
     }
 
 
-//http://php.net/manual/fr/function.strcasecmp.php
-    char chaud[20] = "HeLlo";
-    char chaude[20] = "HElLo";
-    str_casecmp(chaud, chaude);
-    if(strcmp(chaud, chaude) == 0)
-    {
-        printf("strcasecmp is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("strcasecmp Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.stripos.php
-    char oui[20] = "hellortloEo";
-    char find[20] = "lOe";
-    int pos = 0;
-    stripos(oui, find, &pos);
-    if(pos == 7)
-    {
-        printf("stripos is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("stripos Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.strrchr.php
-    char non[20] = "hel.lo";
-    char non2[20];
-    int non3 = '.';
-    str_rchr(non, non2, non3);
-    if(strcmp(non2, ".lo") == 0)
-    {
-        printf("strrchr is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("strrchr Down..\n");
-    }
-
-
-
 //http://php.net/manual/fr/function.strrev.php
     char droit[20] = "Hel.lo Wolrd!";
     char revers[20];
@@ -328,56 +228,6 @@ int main()
     else
     {
         printf("strrev Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.strripos.php
-    char toto[20] = "HelloELOeLoE";
-    char titi[20] = "Loe";
-    int position;
-    strripos(toto, titi, &position);
-    printf("%d ",position);
-    if(position == 6)
-    {
-        printf("strripos is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("strripos Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.strrpos.php
-    char tutu[20] = "HelloEloeLoe";
-    char tata[20] = "loe";
-    int posi;
-    str_rpos(tutu, tata, &posi);
-    printf("%d ",position);
-    if(posi == 6)
-    {
-        printf("strrpos is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("strrpos Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.strtok.php
-    char guu[20] = "Hel/lo";
-    char goo[20];
-    int cut = '/';
-    str_tok(guu, goo, &cut);
-    if(strcmp(goo, "Hel") == 0)
-    {
-        printf("strtok is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("strtok Down..\n");
     }
 
 
@@ -421,55 +271,6 @@ int main()
     else
     {
         printf("strstr Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.substr-count.php
-    char pro[20] = "Hellollelalill";
-    char pru[20] = "ll";
-    int pri = 0;
-    substr_count(pro, pru, &pri);
-    printf("%d ",pri);
-    if(pri == 3)
-    {
-        printf("substr_count is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("substr_count Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.substr-replace.php
-    char enf[200] = "leHelloHell";
-    substr_replace(enf);
-    printf("%s ",enf);
-    if(strcmp(enf, "Paradiso") == 0)
-    {
-        printf("substr_replace is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("substr_replace Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.substr.php
-    char pas[30] = "hello";
-    char neg[30];
-    int start = 1, taille = 3;
-    sub_str(pas, neg, &start, &taille);
-    printf("%s ",neg);
-    if(strcmp(neg, "ell") == 0)
-    {
-        printf("substr is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("substr Down..\n");
     }
 
 
