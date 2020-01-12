@@ -45,17 +45,17 @@ int main()
 
 
 //http://php.net/manual/fr/function.implode.php
-    char faa[50] = "Bonjour";
-    char faa2[25] = "monsieur";
-    implode(faa, faa2);
-    if(strcmp(faa, "Bonjour monsieur") == 0)
+    char tableauImplode1[50] = "Hello";
+    char tableauImplode2[25] = "World";
+    implode(tableauImplode1, tableauImplode2);
+    if(strcmp(tableauImplode1, "Hello World") == 0)
     {
-        printf("implode is ok\n");
+        printf("implode fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("implode Down..\n");
+        printf("implode ne fonctionne pas\n");
     }
 
 
@@ -64,277 +64,178 @@ int main()
     lcfirst(foo);
     if(strcmp(foo, "helloWorld") == 0)
     {
-        printf("lcfirst is ok\n");
+        printf("lcfirst fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("lcfirst Down..\n");
+        printf("lcfirst ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.ltrim.php
-    char fuu[20] = "    hello";
-    char fuu2[20];
-    ltrim(fuu, fuu2);
-    if(strcmp(fuu2, "hello") == 0)
+    char tableauLtrim1[20] = "  Hello";
+    char tableauLtrim2[20];
+    ltrim(tableauLtrim1, tableauLtrim2);
+    if(strcmp(tableauLtrim2, "Hello") == 0)
     {
-        printf("ltrim is ok\n");
+        printf("ltrim fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("ltrim Down..\n");
+        printf("ltrim ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.nl2br.php
 
-    char fii[20] = "hello";
-    nl2br(fii);
-    if(strcmp(fii, "hello\n") == 0)
+    char tableauNl2br[20] = "Hello";
+    nl2br(tableauNl2br);
+    if(strcmp(tableauNl2br, "Hello\n") == 0)
     {
-        printf("nl2br is ok\n");
+        printf("nl2br fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("nl2br Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.rtrim.php
-    char fooo[20] = "Hello  ";
-    char fooo2[20];
-    rtrim(fooo, fooo2);
-    if(strcmp(fooo2, "Hello") == 0)
-    {
-        printf("rtrim is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("rtrim Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.str-pad.php
-    char faaa[20] = "Hello";
-    char faaa2[20] = "x";
-    str_pad(faaa, faaa2);
-    if(strcmp(faaa2, "Hello=====") == 0)
-    {
-        printf("str-pad is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("str-pad Down..\n");
+        printf("nl2br ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.str-repeat.php
-    char jacko[20] = "Hello";
-    str_repeat(jacko);
-    if(strcmp(jacko, "HelloHelloHello") == 0)
+    char tableauStrRepeat[20] = "YO";
+    str_repeat(tableauStrRepeat);
+    if(strcmp(tableauStrRepeat, "YOYOYOYOYOYO") == 0)
     {
-        printf("str-repeat is ok\n");
+        printf("str-repeat fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("str-repeat Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.str-rot13.php
-    char code[20] = "hello";
-    str_rto13(code);
-    if(strcmp(code, "uryyb") == 0)
-    {
-        printf("str-rot13 is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("str-rot13 Down..\n");
-    }
-
-
-//http://php.net/manual/fr/function.str-shuffle.php
-    char move[20] = "oui";
-    str_shuffle(move);
-    printf("%s ",move);
-    if(strcmp(move, "oui") == 0)
-    {
-        printf("str-shuffle is ok\n");
-        nbPoint++;
-    }
-    else if(strcmp(move, "oiu") == 0)
-    {
-        printf("str-shuffle is ok\n");
-        nbPoint++;
-    }
-    else if(strcmp(move, "uio") == 0)
-    {
-        printf("str-shuffle is ok\n");
-        nbPoint++;
-    }
-    else if(strcmp(move, "uoi") == 0)
-    {
-        printf("str-shuffle is ok\n");
-        nbPoint++;
-    }
-    else if(strcmp(move, "iou") == 0)
-    {
-        printf("str-shuffle is ok\n");
-        nbPoint++;
-    }
-    else if(strcmp(move, "iuo") == 0)
-    {
-        printf("str-shuffle is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("str-shuffle Down..\n");
+        printf("str-repeat ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.str-word-count.php
-    char count2[40] = "hello world\nje suis\tbeau";
+    char count2[40] = "ceci est un test";
     int count = 1;
     str_word_count(count2, &count);
-    if(count == 5)
+    if(count == 4)
     {
-        printf("str-word-count is ok\n");
+        printf("str-word-count fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("str-word-count Down..\n");
+        printf("str-word-count ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.strrev.php
-    char droit[20] = "Hel.lo Wolrd!";
-    char revers[20];
-    str_rev(droit, revers);
-    if(strcmp(revers, "!drloW ol.leH") == 0)
+    char phrase[20] = "ceci est un test";
+    char inverse[20];
+    str_rev(phrase, inverse);
+    if(strcmp(inverse, "tset nu tse icec") == 0)
     {
-        printf("strrev is ok\n");
+        printf("strrev fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("strrev Down..\n");
+        printf("strrev ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.strtolower.php
-    char caps[20] = "CAPS LOCK";
-    str_tolower(caps);
-    if(strcmp(caps, "caps lock") == 0)
+    char minuscule[20] = "MAJUSCULE MAJUSCULE";
+    str_tolower(minuscule);
+    if(strcmp(minuscule, "majuscule majuscule") == 0)
     {
-        printf("strtolower is ok\n");
+        printf("strtolower fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("strtolower Down..\n");
+        printf("strtolower ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.strtoupper.php
-    char lock[30] = "i need caps lock";
-    str_toupper(lock);
-    if(strcmp(lock, "I NEED CAPS LOCK") == 0)
+    char majuscule[30] = "minuscule minuscule";
+    str_toupper(majuscule);
+    if(strcmp(majuscule, "MINUSCULE MINUSCULE") == 0)
     {
-        printf("strtoupper is ok\n");
+        printf("strtoupper fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("strtoupper Down..\n");
-    }
-
-
-
-//http://php.net/manual/fr/function.strtr.php
-    char rpl[20] = "Hello";
-    str_str(rpl);
-    if(strcmp(rpl, "Bella") == 0)
-    {
-        printf("strstr is ok\n");
-        nbPoint++;
-    }
-    else
-    {
-        printf("strstr Down..\n");
+        printf("strtoupper ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.trim.php
-    char viii[20] = "   hello monsieur  ";
-    char voo[20];
-    trim(viii, voo);
-    if(strcmp(voo, "hello monsieur") == 0)
+    char tableauTrim1[20] = "   hello world  ";
+    char tableauTrim2[20];
+    trim(tableauTrim1, tableauTrim2);
+    if(strcmp(tableauTrim2, "hello world") == 0)
     {
-        printf("trim is ok\n");
+        printf("trim fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("trim Down..\n");
+        printf("trim ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.ucfirst.php
-    char koo[20] = "hELLOWORLD";
-    ucfirst(koo);
-    if(strcmp(koo, "HELLOWORLD") == 0)
+    char tableauUcfirst[20] = "hello";
+    ucfirst(tableauUcfirst);
+    if(strcmp(tableauUcfirst, "Hello") == 0)
     {
-        printf("ucfirst is ok\n");
+        printf("ucfirst fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("ucfirst Down..\n");
+        printf("ucfirst ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.ucwords.php
-    char troo[20] = "hello world";
-    ucwords(troo);
-    if(strcmp(troo, "Hello World") == 0)
+    char tableauUcwords[20] = "hello world";
+    ucwords(tableauUcwords);
+    if(strcmp(tableauUcwords, "Hello World") == 0)
     {
-        printf("ucwords is ok\n");
+        printf("ucwords fonctionne\n");
         nbPoint++;
     }
     else
     {
-        printf("ucwords Down..\n");
+        printf("ucwords ne fonctionne pas\n");
     }
 
 
 //http://php.net/manual/fr/function.wordwrap.php
-    char lroo[20] = "Hello world";
-    char lroo1[20], lroo2[20];
-    wordwrap(lroo, lroo1, lroo2);
-    if(strcmp(lroo1, "Hello") == 0)
+    char tableauWordwrap1[20] = "Hello world";
+    char tableauWordwrap2[20], tableauWordwrap3[20];
+    wordwrap(tableauWordwrap1, tableauWordwrap2, tableauWordwrap3);
+    if(strcmp(tableauWordwrap2, "Hello") == 0)
     {
-      if(strcmp(lroo2, "world") == 0)
+      if(strcmp(tableauWordwrap3, "world") == 0)
       {
-        printf("wordwrap is ok\n");
+        printf("wordwrap fonctionne\n");
         nbPoint++;
       }
     }
     else
     {
-        printf("wordwrap Down..\n");
+        printf("wordwrap ne fonctionne pas\n");
     }
 
-
-    printf("\nVotre belle note est de: %d sur 30. \n", nbPoint);
+    //score final
+    printf("\nScore : %d. \n", nbPoint);
     return 0;
 }

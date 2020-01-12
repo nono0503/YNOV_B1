@@ -3,24 +3,24 @@
 #include <time.h>
 #include <math.h>
 
-char* implode(char* result, char* phrase)
+char* implode(char* resultat, char* phrase)
 {
     int i = 0;
     int j = 0;
 
-    while(result[i] != 0)
+    while(resultat[i] != 0)
     {
         i++;
     }
-    result[i] = ' ';
+    resultat[i] = ' ';
     while(phrase[j] != 0)
     {
-        result[i+1] = phrase[j];
+        resultat[i+1] = phrase[j];
         i++;
         j++;
     }
 
-    return result;
+    return resultat;
 }
 
 char* lcfirst(char* str)
@@ -29,24 +29,24 @@ char* lcfirst(char* str)
     return str;
 }
 
-char* ltrim(char* phrase, char* phrase2)
+char* ltrim(char* phrase1, char* phraseModif)
 {
     int j = 0;
     int i = 0;
-    while(phrase[i] == ' ')
+    while(phrase1[i] == ' ')
     {
         i++;
     }
 
-    while(phrase[i] != '\0')
+    while(phrase1[i] != '\0')
     {
-        phrase2[j] = phrase[i];
+        phraseModif[j] = phrase1[i];
         i++;
         j++;
     }
-    phrase2[j] = '\0';
+    phraseModif[j] = '\0';
 
-    return phrase2;
+    return phraseModif;
 }
 
 char* nl2br(char* phrase)
@@ -57,93 +57,20 @@ char* nl2br(char* phrase)
 }
 
 
-char* rtrim(char* phrase, char* phrase2)
-{
-int j = 0;
-int i = 0;
-int h = strlen(phrase) - 1;
-while(phrase[h] == ' ')
-{
-  h--;
-}
-while(phrase[i] != phrase[h])
-{
-  phrase2[j] = phrase[i];
-  i++;
-  j++;
-}
-phrase2[j] = phrase[h];
-phrase2[j+1] = '\0';
-
-return phrase2;
-}
-
-
-char* str_pad(char* phrase, char* full)
-{
-    int i = 0;
-    char blanc[] = "=";
-    strcpy(full, phrase);
-    while(phrase[i] != '\0')
-    {
-        i++;
-    }
-    while(i != 10)
-    {
-        full[i] = blanc[0];
-        i++;
-    }
-
-    return full;
-}
-
-char* str_repeat(char* jacko)
+char* str_repeat(char* multipl)
 {
     char repeat[20];
-    strcpy(repeat, jacko);
-    for(int i = 0 ; i != 2 ; i++)
+    strcpy(repeat, multipl);
+    for(int i = 0 ; i != 5 ; i++)
     {
-        strcat(jacko, repeat);
+        strcat(multipl, repeat);
     }
 
-    return jacko;
+    return multipl;
 }
 
 
-char* str_rto13(char* code)
-{
-for(int i = 0 ; code[i] != '\0' ; i++){
-    if(code[i] >= 'a' && code[i] <= 'm')
-    {
-        code[i] = code[i] + 13;
-    }else{
-    code[i] = code[i] - 13;
-    }
-}
-
-return code;
-}
-
-
-char* str_shuffle(char* phrase)
-{
-    int i = 0;
-    int j = 0;
-while(phrase[i] != '\0')
-{
-    i++;
-}
-while(phrase[j] != '\0')
-{
-    phrase[j] = phrase[rand()%i];
-    j++;
-}
-
-return phrase;
-}
-
-
-int* str_word_count(char* phrase, int* count)
+int* str_word_count(char* phrase, int* compte)
 {
 int j = 1;
 for (int i = 0; i != strlen(phrase); i++){
@@ -153,13 +80,13 @@ for (int i = 0; i != strlen(phrase); i++){
  }
 }
 
-*count = j;
+*compte = j;
 
-return count;
+return compte;
 }
 
 
-char* str_rev(char* phrase, char* phrase2)
+char* str_rev(char* phrase, char* phraseModif)
 {
   int j = 0;
   int i = 0;
@@ -169,63 +96,45 @@ char* str_rev(char* phrase, char* phrase2)
   }
 while(phrase[i] != '\0')
 {
-  phrase2[j-1] = phrase[i];
+  phraseModif[j-1] = phrase[i];
   i++;
   j--;
 }
-phrase2[i] = '\0';
+phraseModif[i] = '\0';
 
-  return phrase2;
+  return phraseModif;
 }
 
 
-char* str_tolower(char* caps)
+char* str_tolower(char* minuscule)
 {
-for(int i = 0 ; caps[i] != '\0' ; i++)
+for(int i = 0 ; minuscule[i] != '\0' ; i++)
 {
-  if(caps[i] >= 'A' && caps[i] <= 'Z')
+  if(minuscule[i] >= 'A' && minuscule[i] <= 'Z')
   {
-    caps[i] = caps[i] + 32;
+    minuscule[i] = minuscule[i] + 32;
   }
 }
 
-  return caps;
+  return minuscule;
 }
 
 
-char* str_toupper(char* lock)
+char* str_toupper(char* majuscule)
 {
-for(int i = 0 ; lock[i] != '\0' ; i++)
+for(int i = 0 ; majuscule[i] != '\0' ; i++)
 {
-  if(lock[i] >= 'a' && lock[i] <= 'z')
+  if(majuscule[i] >= 'a' && majuscule[i] <= 'z')
   {
-    lock[i] = lock[i] - 32;
+    majuscule[i] = majuscule[i] - 32;
   }
 }
 
-  return lock;
+  return majuscule;
 }
 
 
-char*str_str(char* phrase)
-{
-for(int i = 0 ; phrase[i] != '\0' ; i++)
-{
-  if(phrase[i] == 'H')
-  {
-    phrase[i] = 'B';
-  }
-  if(phrase[i] == 'o')
-  {
-    phrase[i] = 'a';
-  }
-}
-
-  return phrase;
-}
-
-
-char* trim(char* phrase, char* phrase2)
+char* trim(char* phrase, char* phraseSansEspace)
 {
 int j = 0;
 int i = 0;
@@ -240,14 +149,14 @@ while(phrase[h] == ' ')
 }
 while(phrase[i] != phrase[h])
 {
-  phrase2[j] = phrase[i];
+  phraseSansEspace[j] = phrase[i];
   i++;
   j++;
 }
-phrase2[j] = phrase[h];
-phrase2[j+1] = '\0';
+phraseSansEspace[j] = phrase[h];
+phraseSansEspace[j+1] = '\0';
 
-  return phrase2;
+  return phraseSansEspace;
 }
 
 
@@ -269,28 +178,27 @@ for(int i = 0 ; phrase[i] != '\0' ; i++)
     phrase[i+1] = phrase[i+1] -32;
   }
 }
-
   return phrase;
 }
 
 
-void wordwrap(char* phrase, char* phrase1, char* phrase2)
+void wordwrap(char* mot1, char* prendLeMot1, char* mot2)
 {
 int i = 0;
 int j = 0;
-while(phrase[i] != ' ')
+while(mot1[i] != ' ')
 {
-  phrase1[i] = phrase[i];
+  prendLeMot1[i] = mot1[i];
   i++;
 }
-phrase1[i] = '\0';
+prendLeMot1[i] = '\0';
 
-while(phrase[i] != '\0')
+while(mot1[i] != '\0')
 {
-  phrase2[j] = phrase[i+1];
+  mot2[j] = mot1[i+1];
   i++;
   j++;
 }
-phrase2[j] = '\0';
+mot2[j] = '\0';
 
 }
