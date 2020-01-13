@@ -31,10 +31,12 @@
 			   <div class="todolistheader">
 			   	<h1>Liste d'items</h1>
 			   </div>
-               <ul class="listeItem">
+               <ul id="listItem">
+                   <li>test non implémenté</li>
                </ul>
-               <input type="text" id="" placeholder="Que voulez-vous ajouter à la liste ?">
-               <button type="button" class="btn btn-primary ajoutItem">Ajouter à la liste</button>
+               <a></a>
+               <input type="text" id="textItem" placeholder="Que voulez-vous ajouter à la liste ?">
+               <button onClick="addItem()" type="button" class="btn btn-primary ajoutItem">Ajouter à la liste</button>
                <button type="button" class="btn btn-secondary">Supprimer de la liste</button>
 		   
 		   
@@ -55,5 +57,14 @@
     <!-- Include all compiled plugins (below), or include individual files as needed --> 
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap-4.3.1.js"></script>
+      <script>
+      function addItem() {
+    var azode = document.createElement("li");
+    var textadd = document.getElementById('textItem').value;
+          alert(textadd);
+    azode.appendChild(textadd);
+    document.getElementById("listItem").appendChild(azode);
+}
+      </script>
   </body>
 </html>
