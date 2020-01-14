@@ -85,6 +85,17 @@ $test1 = [
 ];
 ?>
 
+
+<?php
+echo"<br><br><br>";
+   function bonjour($prenom, $role='abonné(e)'){
+       echo 'Bonjour ' .$prenom. ' vous êtes un(e) ' .$role. '.<br>';
+   }
+  
+   bonjour('Mathilde');
+   bonjour('Pierre', 'administrateur');
+?>
+
 </body>
 </html>
 
