@@ -35,8 +35,56 @@
       echo $world[$i];
     }
     echo  "</h1>";
-    echo "<small>Some gay shit...</small>";
+    
+    $ma_variable = 10;
+    echo $ma_variable;
+    echo ("<h3>" . "ma variable vaut $ma_variable" . "</h3>");
+    echo 'ma variable vaut $ma_variable';
   ?>
+  <p><?= $ma_variable ?></p>
+  <?php
+   $x = 4; //On affecte la valeur 4 à $x
+   $y = 2; //On affecte la valeur 2 à $y
+?> 
+<?php if ($x > 1) :?>
+   <p>$x contient une valeur stric. supérieure à 1</p>
+<?php else : ?>
+   <p>$x contient une valeur inférieure ou égale à 1</p>
+<?php endif; ?>
+
+<?php
+$coordonnees['prenom'] = 'François';
+$coordonnees['nom'] = 'Dupont';
+$coordonnees['adresse'] = '3 Rue du Paradis';
+$coordonnees['ville'] = 'Marseille' . ' ' . 'Paris';
+?>
+<?php
+echo $coordonnees['ville'];
+?>
+
+<?php
+echo"<br> <br>"
+?>
+<?php
+$coord = array (
+    'prenom' => 'François',
+    'nom' => 'Dupont',
+    'adresse' => '3 Rue du Paradis',
+    'ville' => 'Marseille');
+
+foreach($coord as $cle => $element)
+{
+    echo '[' . $cle . '] vaut ' . $element . '<br />';
+}
+?>
+
+
+<?php
+$test1 = [
+    'prenom' => 'Pierre', 'nom' => 'Da Silva'
+];
+?>
+
 </body>
 </html>
 
