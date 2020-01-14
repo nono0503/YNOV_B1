@@ -30,7 +30,7 @@ $scolarite = [
     ]
     ];
 
-$exp = [
+$exp = array (
     [
         'annee' => '2019',
         'entreprise' => 'Brigade des Sapeurs Pompiers de Paris',
@@ -81,10 +81,45 @@ $exp = [
         'entreprise' => 'Poujouly',
         'poste' => 'Garagiste'
     ]
-    ];
+);
 
-    $loisirs = ['airsoft', 'course a pied'];
-    
+    $loisirs = ['Airsoft', 'Course a pied', 'Musculation'];
+
+    //presentation
+    function pres() {
+    foreach($GLOBALS['informations'] as $element)
+    {
+        echo ' ' . $element;
+    }    
+}
+
+//scolaire
+function scol() {
+foreach($GLOBALS['scolarite'] as $element) {
+    echo '<br>' . '<hr>' . '<br>';
+    foreach($element as $element1) {
+        echo $element1 . '<br>';
+    }
+}
+}
+
+//experiences pro
+function exper() {
+    foreach($GLOBALS['exp'] as $element) {
+        echo '<br>' . '<hr>';
+        foreach($element as $element1) {
+            echo $element1 . '<br>';
+        }
+    }
+}
+
+//loisirs
+function lois() {
+for($i = 0; $i < 3; $i++) {
+    echo $GLOBALS['loisirs'][$i] . '<br><hr><br>';
+}
+}
+
 ?>
 <style>
     body {
