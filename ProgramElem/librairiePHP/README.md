@@ -9,7 +9,7 @@ main.c :  qui contient la fonction main() et les tests unitaires
 Ex.
 https://gitlab.bzctoons.net/bzctoons/phplib/tree/master
 
-```
+
 http://php.net/manual/fr/function.explode.php
 http://php.net/manual/fr/function.implode.php
 http://php.net/manual/fr/function.lcfirst.php
@@ -40,4 +40,3 @@ http://php.net/manual/fr/function.trim.php
 http://php.net/manual/fr/function.ucfirst.php
 http://php.net/manual/fr/function.ucwords.php
 http://php.net/manual/fr/function.wordwrap.php
-```
