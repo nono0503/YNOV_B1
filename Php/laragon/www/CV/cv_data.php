@@ -83,10 +83,10 @@ $exp = array (
     ]
 );
 
-    $loisirs = ['Airsoft', 'Course a pied', 'Musculation'];
+$loisirs = ['Airsoft', 'Course a pied', 'Musculation'];
 
     //presentation
-    function pres() {
+function pres() {
     foreach($GLOBALS['informations'] as $element)
     {
         echo ' ' . $element;
