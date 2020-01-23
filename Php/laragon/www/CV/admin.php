@@ -48,7 +48,7 @@ if (isset($_FILES['monfichier1']) AND $_FILES['monfichier1']['error'] == 0)
             {
             		// On peut valider le fichier et le stocker définitivement
 			// le dossier uploads doit exister
-                  move_uploaded_file($_FILES['monfichier1']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
+                  move_uploaded_file($_FILES['monfichier1']['tmp_name'], 'uploads/' . basename($_FILES['monfichier1']['name']));
                   echo "L'envoi a bien été effectué !";
                 }
         }
@@ -66,7 +66,7 @@ if (isset($_FILES['monfichier2']) AND $_FILES['monfichier2']['error'] == 0)
             {
             		// On peut valider le fichier et le stocker définitivement
 			// le dossier uploads doit exister
-                  move_uploaded_file($_FILES['monfichier2']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
+                  move_uploaded_file($_FILES['monfichier2']['tmp_name'], 'uploads/' . basename($_FILES['monfichier2']['name']));
                   echo "L'envoi a bien été effectué !";
                 }
         }
@@ -84,7 +84,7 @@ if (isset($_FILES['monfichier3']) AND $_FILES['monfichier3']['error'] == 0)
             {
             		// On peut valider le fichier et le stocker définitivement
 			// le dossier uploads doit exister
-                  move_uploaded_file($_FILES['monfichier3']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
+                  move_uploaded_file($_FILES['monfichier3']['tmp_name'], 'uploads/' . basename($_FILES['monfichier3']['name']));
                   echo "L'envoi a bien été effectué !";
                 }
         }
