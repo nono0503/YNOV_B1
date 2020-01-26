@@ -1567,3 +1567,6 @@ h1, h2, h3, h4, h5,
 @media (min-width: 991.98px) {
         .img-fluid { height: 250px;}
     }
+.region {
+    font-size: 0.9em;
+}
