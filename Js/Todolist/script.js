@@ -10,7 +10,9 @@ const select = element => document.querySelector(element);
 const selectAll = element => document.querySelectorAll(element);
 
 // Elements
-const [input, list, addButton, selectedCounter, AllDelete, clearAll] = ['#actionInput', '#casesacocher', '#addItem', '#selectionCount', '#deleteItems', '#clearAll'].map(el => select(el));
+const [input, list, addButton, selectedCounter,
+   AllDelete, clearAll] = ['#actionInput', '#casesacocher', '#addItem', '#selectionCount', 
+   '#deleteItems', '#clearAll'].map(el => select(el));
 let deletionCounter = 0;
 
 // localStorage.removeItem( 'myTodoList' );
@@ -100,14 +102,6 @@ const render = () => {
   localStorage.setItem('myTodoList', JSON.stringify(casesacocher));
 }
 
-
-// add todo by pressing enter
-document.addEventListener('keyup', e => {
-  if (e.keyCode == 13)
-    if (addTodo(input.value))
-      input.value = '';
-})
-
 addButton.onclick = () => {
   if (addTodo(input.value))
     input.value = '';
@@ -136,27 +130,5 @@ selectAll('.custom-select__item')
 select('.custom-select').onclick = () =>
   select('.custom-select').classList.toggle('shown')
 
-//Date
-const months = [
-  "Janvier",
-  "Février",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Aout",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Décembre"
-];
-
-const date = new Date();
-
-select('.appHeader > h1').innerText = `${ date.getHours() } h ${date.getMinutes() }, ${ date.getDate() } ${ months[ date.getMonth() ] } ${ date.getFullYear() }`;
 
 render();
-
-
-//navigator
